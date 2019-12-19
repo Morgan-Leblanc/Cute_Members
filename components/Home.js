@@ -26,9 +26,7 @@ const styles = StyleSheet.create({
 export default ({ history }) => (
   <View style={styles.container} >
     <Text style={styles.title}>CUT(e) MEMBERS</Text>
-    <TouchableOpacity onPress={() => history.push("/newgame")}>
-      <Text style={styles.button} >PLAY</Text>
-    </TouchableOpacity>
+      <Text style={styles.button} onPress={() => history.push("/newgame")} >PLAY</Text>
   </View>
 
 
