@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, Text, Button, TouchableOpacity } from "react-native";
 import { TouchableHighlight } from "react-native-gesture-handler";
 
 const styles = StyleSheet.create({
+
+
     player: {
         fontSize: 60,
         textAlign: 'center',
@@ -31,28 +33,45 @@ const styles = StyleSheet.create({
     blue: {
         padding: 90,
         margin: 5,
-        backgroundColor: "blue"
+        backgroundColor: 'rgba(72,238,255, 1)'
     },
+    blueLight: {
+        padding: 90,
+        margin: 5,
+        backgroundColor: 'rgba(72,238,255,0.5)'
+    },
+
     yellow: {
         padding: 90,
         margin: 5,
-
-        backgroundColor: "yellow"
-    }, red: {
+        backgroundColor: 'rgba(255,207,55, 1)'
+    },
+    yellowLight: {
         padding: 90,
         margin: 5,
-
-        backgroundColor: "red"
+        backgroundColor: 'rgba(255,207,55, 0.5)'
     },
+
+    red: {
+        padding: 90,
+        margin: 5,
+        backgroundColor: 'rgba(250,73,110, 1)'
+    },
+    redLight: {
+        padding: 90,
+        margin: 5,
+        backgroundColor: 'rgba(250,73,110, 0.5)'
+    },
+
     green: {
         padding: 90,
         margin: 5,
-        backgroundColor: "green"
+        backgroundColor: 'rgba(122,53,209, 1)'
     },
-    green: {
+    greenLight: {
         padding: 90,
         margin: 5,
-        backgroundColor: "green"
+        backgroundColor: 'rgba(122,53,209, 0.5)'
     },
     challenge: {
         fontSize: 40
@@ -60,40 +79,91 @@ const styles = StyleSheet.create({
 })
 
 
-// Algo pour générer un tableau aléatoire // 
 
-const colors = [ 'blue', 'red', 'yellow', 'green']
-const tab1 = []
 
-// ici on récupère à la place du 7 le montant du slider passé en props //
-fillTab1 = () => {
-    for (i=0; i < 7 ; i++) {
-    const index = Math.floor(Math.random() * colors.length)
-    tab1.push(colors[index]) 
-    console.log(tab1)
-    }
-    console.log("tab 1 final", tab1)
-}
 
 export default ({ history }) => {
+    const [blueLighter, setBlueLighter] = useState({
+        boolean :false,
+        color : "blue"
+    });
+    const [yellowLighter, setYellowLighter] = useState({
+        boolean :false,
+        color : "yellow"
+    });;
+    const [greenLighter, setGreenLighter] = useState({
+        boolean :false,
+        color : "green"
+    });;
+    const [redLighter, setRedLighter] = useState({
+        boolean :false,
+        color : "red"
+    });;
+
+    // Algo pour générer un tableau aléatoire // 
+const colors = ['blue', 'red', 'yellow', 'green']
+const tab1 = []
+// ici on récupère à la place du 7 le montant du slider passé en props //
+fillTab1 = () => {
+    for (i = 0; i < 7; i++) {
+        const index = Math.floor(Math.random() * colors.length)
+        tab1.push(colors[index])
+        console.log("tab 1 final", tab1)
+
+    }
+    return tab1
+}
+
+// Algo pour jouer les couleurs du tableau aléatoire //
+colorsLighter = () => {
+    console.log('bonjour')
+    tab1.map(color => {
+        console.log('elemennt color',color)
+        if (color === blueLighter.color) {
+            setBlueLighter(!blueLighter.boolean)
+        }
+        else if (color === yellowLighter.color) {
+            setYellowLighter(!yellowLighter.boolean)
+        }
+        else if (color === greenLighter.color) {
+            setGreenLighter(!greenLighter.boolean)
+        }
+        else {
+            setRedLighter(!redLighter.boolean)
+        }
+    })
+}
+
+ console.log(tab1)
     return (
-    <View style={styles.container} >
-        <Text style={styles.player}>Player ?</Text>
-        <Text style={styles.challenge}>This is your challenge :</Text>
-        <View style={styles.colorTop}>
-            <View style={styles.blue} >
+        <View style={styles.container} >
+            <Text style={styles.player}>Player ?</Text>
+            <Text onPress={() => fillTab1()}>Remplir tableau aléatoire</Text>
+
+            <Text style={styles.challenge}>This is your challenge :</Text>
+            <View style={styles.colorTop}>
+
+                <View style={blueLighter ? styles.blueLight : styles.blue} >
+                </View>
+
+                <View style={redLighter ? styles.redLight : styles.red}>
+                </View>
             </View>
-            <View style={styles.red}>
+            <View style={styles.colorBottom}>
+                <View style={yellowLighter ? styles.yellowLight : styles.yellow}>
+                </View>
+                <View style={greenLighter ? styles.greenLight : styles.green}>
+                </View>
             </View>
-        </View>
-        <View style={styles.colorBottom}>
-            <View style={styles.yellow}>
-            </View>
-            <View style={styles.green}>
-            </View>
-        </View>
-        <Text onPress={() => fillTab1()}>Bonjour TABLEAU BITCH</Text>
-    </View>
+
+
+
+            <Text onPress={() => colorsLighter()}>Allumer le tableau</Text>
+
+
+        </View >
     )
+
+
 
 };
