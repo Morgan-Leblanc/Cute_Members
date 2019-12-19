@@ -1,22 +1,24 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Image, Button} from "react-native";
+import { StyleSheet, Text, View, Image, Button } from "react-native";
 import chicken from "../assets/pictures/chicken.png";
 import goat from "../assets/pictures/goat.png";
 import cat from "../assets/pictures/cat.png";
+import { withRouter } from "react-router-native";
 
 export default ({ history }) => {
-  const [playerOne, setPlayerOne] = useState(null);
-  const [playerTwo, setPlayerTwo] = useState(null);
+  const [playerOne, setPlayerOne] = useState("");
+  const [playerTwo, setPlayerTwo] = useState("");
 
   const checkPick = () => {
-    if(playerTwo || playerOne === null ){
-    return (
-      alert("Un des des deux joueurs n'a pas selectionné son personnage")
-    )
-    }else{ return(
-      history.push("/")
-    )}
-  }
+    if (playerTwo === "") {
+      alert("Un des des deux joueurs n'a pas selectionné son personnage");
+    }
+    if (playerOne === "") {
+      alert("Un des des deux joueurs n'a pas selectionné son personnage");
+    } else {
+      history.push("/");
+    }
+  };
 
   console.log("playerone", playerOne);
   console.log("playertwo", playerTwo);
@@ -32,7 +34,9 @@ export default ({ history }) => {
             <View>
               <Text
                 name="chicken"
-                onPress={() => setPlayerOne({ name: "chicken", picture : {chicken} })}
+                onPress={() =>
+                  setPlayerOne({ name: "chicken", picture: { chicken } })
+                }
               >
                 <Image
                   name="chicken"
@@ -42,7 +46,10 @@ export default ({ history }) => {
               </Text>
             </View>
             <View>
-              <Text name="cat" onPress={() => setPlayerOne({ name: "cat", picture : {cat}})}>
+              <Text
+                name="cat"
+                onPress={() => setPlayerOne({ name: "cat", picture: { cat } })}
+              >
                 <Image
                   name="cat"
                   style={{ width: 70, height: 70 }}
@@ -51,7 +58,12 @@ export default ({ history }) => {
               </Text>
             </View>
             <View>
-              <Text name="cat" onPress={() => setPlayerOne({ name: "goat", picture : {goat} })}>
+              <Text
+                name="cat"
+                onPress={() =>
+                  setPlayerOne({ name: "goat", picture: { goat } })
+                }
+              >
                 <Image style={{ width: 70, height: 70 }} source={goat} />
               </Text>
             </View>
@@ -64,7 +76,9 @@ export default ({ history }) => {
             <View>
               <Text
                 name="chicken"
-                onPress={() => setPlayerTwo({ name: "chicken", picture : {chicken} })}
+                onPress={() =>
+                  setPlayerTwo({ name: "chicken", picture: { chicken } })
+                }
               >
                 <Image
                   name="chicken"
@@ -75,7 +89,10 @@ export default ({ history }) => {
             </View>
 
             <View>
-              <Text name="cat" onPress={() => setPlayerTwo({ name: "cat", picture : {cat} })}>
+              <Text
+                name="cat"
+                onPress={() => setPlayerTwo({ name: "cat", picture: { cat } })}
+              >
                 <Image
                   name="cat"
                   style={{ width: 70, height: 70 }}
@@ -84,20 +101,29 @@ export default ({ history }) => {
               </Text>
             </View>
             <View>
-              <Text name="goat" onPress={() => setPlayerTwo({ name: "goat", picture : {goat} })}>
+              <Text
+                name="goat"
+                onPress={() =>
+                  setPlayerTwo({ name: "goat", picture: { goat } })
+                }
+              >
                 <Image style={{ width: 70, height: 70 }} source={goat} />
               </Text>
             </View>
           </View>
-          <Button title="Valide" onPress={() => checkPick()}> Valide</Button>
+          <Text style={styles.buttonCheck} title="Valide" onPress={() => checkPick()}>
+                FIGHT !
+          </Text>
         </View>
       </View>
     </View>
   );
 };
 const styles = StyleSheet.create({
-  button: {
-    color: "red"
+  buttonCheck: {
+    backgroundColor: "black",
+    color: "white",
+    fontSize: 40,
   },
   text: {
     fontSize: 30
