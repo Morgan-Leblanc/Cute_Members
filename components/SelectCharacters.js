@@ -10,12 +10,12 @@ export default ({ history }) => {
 
   const checkPick = () => {
     if (playerTwo === "") {
-      alert("Joueur un  n'a pas selectionné son personnage");
+      alert("Joueur un n'a pas selectionné son personnage");
     }
     if (playerOne === "") {
-      alert("Joueurs deux n'a pas selectionné son personnage");
+      alert("Joueur deux n'a pas selectionné son personnage");
     } else {
-      history.push("/");
+      history.push("/duel_versus");
     }
   };
 
