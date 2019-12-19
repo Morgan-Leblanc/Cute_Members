@@ -5,10 +5,11 @@ import { StyleSheet, Text, View } from "react-native";
 export default class App extends React.Component{
   render(){
   return (
-     <Fragment>
-    <View style={styles.black}/>
-    <View style={styles.lines} style={{justifyContent:'right'}}/>
-    </Fragment>
+     <View style={{justifyContent:"center"}}>
+    <View style={styles.black} />
+    <View style={styles.lineOne}/>
+    </View>
+    
      
     
   );
@@ -17,23 +18,20 @@ export default class App extends React.Component{
 
 const styles = StyleSheet.create({
   black: {
-    flex: 1,
-    padding: 60,
-    marginTop:40 ,
-    minWidth: "60%" ,
-    backgroundColor: "black"
-    
-   },
-   lines: {
-    backgroundColor:"black",
-    width:5,
+    padding: 90,
+    margin: 5,
+    backgroundColor: 'black',
+    borderTopLeftRadius:15,
+    borderTopRightRadius:15,
+
+},
+  lineOne: {
+    padding:3,
+    margin:5,
+    maxWidth:"3%",
     height:600,
+    backgroundColor:'pink'
 
-   },
-   linesL: {
-     backgroundColor:"black",
-     width:5,
-     height:600,
-   }
+  },
 
-  })
+})
