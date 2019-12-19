@@ -59,6 +59,9 @@ const styles = StyleSheet.create({
     }
 })
 
+
+// Algo pour générer un tableau aléatoire // 
+
 const colors = [ 'blue', 'red', 'yellow', 'green']
 const tab1 = []
 
@@ -71,8 +74,6 @@ fillTab1 = () => {
     }
     console.log("tab 1 final", tab1)
 }
-
-console.log(tab1)
 
 export default ({ history }) => {
     return (
