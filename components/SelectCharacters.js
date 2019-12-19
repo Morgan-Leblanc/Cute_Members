@@ -1,8 +1,13 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Image, Button } from "react-native";
-import chicken from "../assets/pictures/chicken.png";
-import goat from "../assets/pictures/goat.png";
-import cat from "../assets/pictures/cat.png";
+import { StyleSheet, Text, View, Image, Button, ImageBackground } from "react-native";
+import chicken from "../assets/pictures/card-octopus.jpg";
+import goat from "../assets/pictures/card-unicorn.jpg";
+import cat from "../assets/pictures/card-cat.jpg";
+import background from "../assets/pictures/background.jpg"
+
+
+
+
 
 export default ({ history }) => {
   const [playerOne, setPlayerOne] = useState("");
@@ -22,13 +27,14 @@ export default ({ history }) => {
   console.log("playerone", playerOne);
   console.log("playertwo", playerTwo);
   return (
+    <ImageBackground source={background} style={{width: '100%', height: '100%'}} >
     <View style={styles.container}>
-      <Text style={styles.text} h1>
+      <Text style={{fontFamily:"IBM"}} style={styles.text} h1>
         Choose your animal
       </Text>
       <View style={styles.playersBox}>
         <View style={styles.playerOne}>
-          <Text> Player One</Text>
+          <Text style={styles.text}> Player One</Text>
           <View style={styles.characters}>
             <View>
               <Text
@@ -39,7 +45,7 @@ export default ({ history }) => {
               >
                 <Image
                   name="chicken"
-                  style={{ width: 70, height: 70 }}
+                  style={{ width: 100, height: 100 }}
                   source={chicken}
                 />
               </Text>
@@ -51,7 +57,7 @@ export default ({ history }) => {
               >
                 <Image
                   name="cat"
-                  style={{ width: 70, height: 70 }}
+                  style={{ width: 100, height: 100 }}
                   source={cat}
                 />
               </Text>
@@ -63,14 +69,14 @@ export default ({ history }) => {
                   setPlayerOne({ name: "goat", picture: { goat } })
                 }
               >
-                <Image style={{ width: 70, height: 70 }} source={goat} />
+                <Image style={{ width: 100, height: 100 }} source={goat} />
               </Text>
             </View>
           </View>
         </View>
 
         <View style={styles.playerTwo}>
-          <Text> Player Two</Text>
+          <Text style={styles.text}> Player Two</Text>
           <View style={styles.characters}>
             <View>
               <Text
@@ -81,7 +87,7 @@ export default ({ history }) => {
               >
                 <Image
                   name="chicken"
-                  style={{ width: 70, height: 70 }}
+                  style={{ width: 100, height: 100 }}
                   source={chicken}
                 />
               </Text>
@@ -94,7 +100,7 @@ export default ({ history }) => {
               >
                 <Image
                   name="cat"
-                  style={{ width: 70, height: 70 }}
+                  style={{ width: 100, height: 100 }}
                   source={cat}
                 />
               </Text>
@@ -106,7 +112,7 @@ export default ({ history }) => {
                   setPlayerTwo({ name: "goat", picture: { goat } })
                 }
               >
-                <Image style={{ width: 70, height: 70 }} source={goat} />
+                <Image style={{ width: 100, height: 100 }} source={goat} />
               </Text>
             </View>
           </View>
@@ -116,6 +122,7 @@ export default ({ history }) => {
         </View>
       </View>
     </View>
+    </ImageBackground>
   );
 };
 const styles = StyleSheet.create({
@@ -125,21 +132,19 @@ const styles = StyleSheet.create({
     fontSize: 40,
   },
   text: {
-    fontSize: 30
+    fontSize: 30,
   },
   container: {
     maxHeight: "100%",
     top: 50,
     flex: 1,
-    backgroundColor: "white",
     alignItems: "center"
   },
   characters: {
     maxHeight: 140,
-    width: 250,
+    width: 350,
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "white",
     alignItems: "center",
     justifyContent: "space-around"
   },
