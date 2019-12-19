@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, Image, Button } from "react-native";
 import chicken from "../assets/pictures/chicken.png";
 import goat from "../assets/pictures/goat.png";
 import cat from "../assets/pictures/cat.png";
-import { withRouter } from "react-router-native";
 
 export default ({ history }) => {
   const [playerOne, setPlayerOne] = useState("");
@@ -11,10 +10,10 @@ export default ({ history }) => {
 
   const checkPick = () => {
     if (playerTwo === "") {
-      alert("Un des des deux joueurs n'a pas selectionné son personnage");
+      alert("Joueur un  n'a pas selectionné son personnage");
     }
     if (playerOne === "") {
-      alert("Un des des deux joueurs n'a pas selectionné son personnage");
+      alert("Joueurs deux n'a pas selectionné son personnage");
     } else {
       history.push("/");
     }
