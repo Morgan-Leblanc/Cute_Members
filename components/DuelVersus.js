@@ -4,23 +4,43 @@ import playerOneLifePicture from "../assets/icons/3-hearts.png";
 import playerTwoLifePicture from "../assets/icons/1-heart-zombie.png";
 import playerOnePicture from "../assets/pictures/card-unicorn.jpg";
 import playerTwoPicture from "../assets/pictures/card-octopus.jpg";
-import background from "../assets/pictures/background.jpg"
+import background from "../assets/pictures/background.jpg";
+import { AppLoading, AuthSession } from 'expo';
+import * as Font from 'expo-font';
+import { Redirect } from "react-router-native";
+
+const fetchFonts = () => {
+    return Font.loadAsync({
+        "Londrina": require('../assets/fonts/LondrinaSolid-Regular.ttf'),
+        "IBM": require('../assets/fonts/IBMPlexSans-Bold.ttf')
+    });
+    };
 
 export default ({ history }) => {
+
+    const [dataLoaded, setDataLoaded] = useState(false);
+        if (!dataLoaded) {
+            return (
+                <AppLoading
+                startAsync={fetchFonts}
+                onFinish={() => setDataLoaded(true)}
+                />
+            );
+        }
 
     return (
         <ImageBackground source={background} style={{width: '100%', height: '100%'}} >
             <View style={styles.versusContainer}>
                 <View style={styles.versusPlayersLife} >
                     <View style={styles.versusPlayerOne} >
-                        <Text style={styles.versusPlayerOneText} >
-                            Player 1
+                        <Text style={styles.versusPlayersText} >
+                            PLAYER 1
                         </Text>
                         <Image style={{ width: 180, height: 70 }} source={playerOneLifePicture} />
                     </View>
                     <View style={styles.versusPlayerTwo} >
-                        <Text style={styles.versusPlayerTwoText} >
-                            Player 2
+                        <Text style={styles.versusPlayersText} >
+                            PLAYER 2
                         </Text>
                         <Image style={{ width: 180, height: 70 }} source={playerTwoLifePicture} />
                     </View>
@@ -33,13 +53,13 @@ export default ({ history }) => {
                         <View style={styles.versusInfo} >
                             <Image style={{ width: 160, height: 160 }} source={playerOnePicture} />
                             <Text style={styles.versusPlayerTextImage} >
-                                Player 1
+                                PLAYER 1
                             </Text>
                         </View>
                         <View style={styles.versusInfo} >
                             <Image style={{ width: 160, height: 160 }} source={playerTwoPicture} />
                             <Text style={styles.versusPlayerTextImage} >
-                                Player 2
+                                PLAYER 2
                             </Text>
                         </View>
                     </View>
@@ -59,31 +79,30 @@ const styles = StyleSheet.create({
         margin: 5,
         flex: 1,
         flexDirection: "row",
-        justifyContent: "space-between",
-        maxHeight: "18%"
+        // justifyContent: "space-between",
+        maxHeight: "18%",
+
     },
     versusPlayerOne: {
         flex: 1,
         flexDirection: "column",
         justifyContent: "center",
-        alignContent: "center"
+        alignContent: "center",
+        width: "100%"
     },
-    versusPlayerOneText: {
+    versusPlayersText: {
         textAlign: "center",
         fontSize: 30,
-        fontWeight: "bold"
+        fontWeight: "bold",
+        fontFamily: "IBM",
+        color:"rgb(122, 53, 209)",
+        width: "100%"
     },
     versusPlayerTwo: {
         flex: 1,
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "flex-end",
-    },
-    versusPlayerTwoText: {
-        textAlign: "center",
-        fontSize: 30,
-        fontWeight: "bold",
-        width: "100%"
     },
     versusRoundAndPlayersInfo: {
         margin: 0,
@@ -96,8 +115,8 @@ const styles = StyleSheet.create({
         width: "100%",
         paddingTop: "30%",
         fontSize: 40,
-        fontWeight: "bold",
-        color: "purple",
+        fontFamily: "IBM",
+        color:"rgb(122, 53, 209)",
         textAlign: "center"
     },
     versusPlayersInfo: {
@@ -111,6 +130,8 @@ const styles = StyleSheet.create({
     versusPlayerTextImage: {
         margin: 0,
         fontSize: 25,
+        fontFamily: "IBM",
+        color:"rgb(122, 53, 209)",
         textAlign: "center",
         top: 15
     },
