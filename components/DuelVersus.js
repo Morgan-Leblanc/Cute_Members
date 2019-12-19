@@ -79,9 +79,7 @@ const styles = StyleSheet.create({
         margin: 5,
         flex: 1,
         flexDirection: "row",
-        // justifyContent: "space-between",
         maxHeight: "18%",
-
     },
     versusPlayerOne: {
         flex: 1,
