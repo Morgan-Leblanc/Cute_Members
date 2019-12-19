@@ -78,11 +78,8 @@ const styles = StyleSheet.create({
     }
 })
 
-
-
-
-
 export default ({ history }) => {
+// state //
     const [blueLighter, setBlueLighter] = useState({
         boolean :false,
         color : "blue"
@@ -100,7 +97,7 @@ export default ({ history }) => {
         color : "red"
     });;
 
-    // Algo pour générer un tableau aléatoire // 
+// Algo pour générer un tableau aléatoire // 
 const colors = ['blue', 'red', 'yellow', 'green']
 const tab1 = []
 // ici on récupère à la place du 7 le montant du slider passé en props //
@@ -120,17 +117,26 @@ colorsLighter = () => {
     tab1.map(color => {
         console.log('elemennt color',color)
         if (color === blueLighter.color) {
-            setBlueLighter(!blueLighter.boolean)
+            setTimeout(() => setBlueLighter(blueLighter.boolean = !blueLighter.boolean,2000))
+            console.log('state blue',blueLighter.boolean)
+
+            setTimeout(() => setBlueLighter(blueLighter.boolean = !blueLighter.boolean,2000))
+            console.log('state blue',blueLighter.boolean)
+
         }
         else if (color === yellowLighter.color) {
-            setYellowLighter(!yellowLighter.boolean)
+            setTimeout(() => setYellowLighter(yellowLighter.boolean = !yellowLighter.boolean,2000))
+            setTimeout(() => setYellowLighter(yellowLighter.boolean = !yellowLighter.boolean,2000))
+
         }
         else if (color === greenLighter.color) {
-            setGreenLighter(!greenLighter.boolean)
-        }
+            setTimeout(() => setGreenLighter(greenLighter.boolean = !greenLighter.boolean,2000))
+            setTimeout(() => setGreenLighter(greenLighter.boolean = !greenLighter.boolean,2000))      
+          }
         else {
-            setRedLighter(!redLighter.boolean)
-        }
+            setTimeout(() => setRedLighter(redLighter.boolean = !redLighter.boolean,2000))
+            setTimeout(() => setRedLighter(redLighter.boolean = !redLighter.boolean,2000))     
+           }
     })
 }
 
