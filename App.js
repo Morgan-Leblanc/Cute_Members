@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { NativeRouter, Switch, Route } from "react-router-native";
 import Home from "./Home";
-import Products from "./Products";
+import Morguy from "./Morguy";
 export default class App extends React.Component {
   render() {
     return (
@@ -10,7 +10,7 @@ export default class App extends React.Component {
         <View style={styles.container}>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/newgame" component={Products} />
+            <Route exact path="/newgame" component={Morguy} />
           </Switch>
         </View>
       </NativeRouter>
