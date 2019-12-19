@@ -1,32 +1,39 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { StyleSheet, Text, View } from "react-native";
-import { NativeRouter, Switch, Route } from "react-router-native";
-import Home from "./Home";
-import Products from "./Products";
 
 
-
-export default class App extends React.Component {
-  render() {
-    return (
-      <NativeRouter>
-        <View style={styles.container}>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/products" component={Products} />
-          </Switch>
-        </View>
-      </NativeRouter>
-    );
-  }
+export default class App extends React.Component{
+  render(){
+  return (
+     <Fragment>
+    <View style={styles.black}/>
+    <View style={styles.lines} style={{justifyContent:'right'}}/>
+    </Fragment>
+     
+    
+  );
 }
+}
+
 const styles = StyleSheet.create({
-  container: {
+  black: {
     flex: 1,
-    backgroundColor: "#DC143C",
-    alignItems: "center",
-    justifyContent: "center"
-  }
-});
+    padding: 60,
+    marginTop:40 ,
+    minWidth: "60%" ,
+    backgroundColor: "black"
+    
+   },
+   lines: {
+    backgroundColor:"black",
+    width:5,
+    height:600,
 
+   },
+   linesL: {
+     backgroundColor:"black",
+     width:5,
+     height:600,
+   }
 
+  })

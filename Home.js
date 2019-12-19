@@ -1,9 +1,38 @@
 import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import {View} from 'react-native';
 
-export default ({ history }) => (
-  <View>
-    <Text>This is the home page</Text>
-    <Button  title="change page" onPress={() => history.push("/products")} />
-  </View>
-);
+export default class Home extends React.Component{
+  render(){
+  return (
+     <View>
+    <View style={styles.black}/>
+    <View style={styles.lines} style={{justifyContent:'right'}}/>
+    </View>
+     
+    
+  );
+}
+}
+
+const styles = StyleSheet.create({
+  black: {
+    flex: 1,
+    padding: 60,
+    marginTop:40 ,
+    minWidth: "60%" ,
+    backgroundColor: "black"
+    
+   },
+   lines: {
+    backgroundColor:"black",
+    width:5,
+    height:600,
+
+   },
+   linesL: {
+     backgroundColor:"black",
+     width:5,
+     height:600,
+   }
+
+});
