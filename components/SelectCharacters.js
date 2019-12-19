@@ -77,7 +77,7 @@ export default function SelectCharacter ({ history }) {
               >
                 <Image
                   name="cat"
-                  style={{  height: 100, width: 100 }}
+                  style={{  height: 100, width: 100}}
                   resizeMode="contain"
                   source={cat}
                 />
@@ -213,11 +213,12 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor:"red"
+    backgroundColor:"yellow",
+    zIndex:33,
   },
   playersBox: {
     flex: 1,
-    bottom: "7%",
+    bottom: "4%",
     alignItems: "center",
     justifyContent: "center"
   }
