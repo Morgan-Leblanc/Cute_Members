@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { NativeRouter, Switch, Route } from "react-router-native";
-import Home from "./Home";
-import Morguy from "./Morguy";
+import Home from "./components/Home";
+import Morguy from "./components/Morguy";
 export default class App extends React.Component {
   render() {
     return (
