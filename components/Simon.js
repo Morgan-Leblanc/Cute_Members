@@ -59,15 +59,29 @@ const styles = StyleSheet.create({
     }
 })
 
-export default ({ history }) => (
+const colors = [ 'blue', 'red', 'yellow', 'green']
+const tab1 = []
+
+// ici on récupère à la place du 7 le montant du slider passé en props //
+fillTab1 = () => {
+    for (i=0; i < 7 ; i++) {
+    const index = Math.floor(Math.random() * colors.length)
+    tab1.push(colors[index]) 
+    console.log(tab1)
+    }
+    console.log("tab 1 final", tab1)
+}
+
+console.log(tab1)
+
+export default ({ history }) => {
+    return (
     <View style={styles.container} >
         <Text style={styles.player}>Player ?</Text>
         <Text style={styles.challenge}>This is your challenge :</Text>
         <View style={styles.colorTop}>
-            <TouchableHighlight>
             <View style={styles.blue} >
             </View>
-            </TouchableHighlight>
             <View style={styles.red}>
             </View>
         </View>
@@ -77,7 +91,8 @@ export default ({ history }) => (
             <View style={styles.green}>
             </View>
         </View>
+        <Text onPress={() => fillTab1()}>Bonjour TABLEAU BITCH</Text>
     </View>
+    )
 
-
-);
+};
