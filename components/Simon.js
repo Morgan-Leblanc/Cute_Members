@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, View, Text, Button, TouchableOpacity } from "react-native";
-import { AuthSession } from "expo";
 import { TouchableHighlight } from "react-native-gesture-handler";
 
 const styles = StyleSheet.create({
@@ -50,7 +49,7 @@ const styles = StyleSheet.create({
         margin: 5,
         backgroundColor: "green"
     },
-    green: active {
+    green: {
         padding: 90,
         margin: 5,
         backgroundColor: "green"
@@ -58,8 +57,6 @@ const styles = StyleSheet.create({
     challenge: {
         fontSize: 40
     }
-
-
 })
 
 export default ({ history }) => (
