@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Image, Button, ImageBackground } from "react-native";
+import { StyleSheet, Text, View, Image, Button, ImageBackground ,TouchableOpacity} from "react-native";
 import octopus from "../assets/pictures/card-octopus.jpg";
 import unicorn from "../assets/pictures/card-unicorn.jpg";
 import cat from "../assets/pictures/card-cat.jpg";
@@ -44,8 +44,7 @@ export default function SelectCharacter ({ history }) {
     }
   };
 
-  console.log("playerone", playerOne);
-  console.log("playertwo", playerTwo);
+
   return (
     <ImageBackground source={background} style={{width: '100%', height: '100%'}} >
     <View style={styles.container}>
@@ -57,7 +56,7 @@ export default function SelectCharacter ({ history }) {
           <Text style={styles.text2}> PLAYER 1</Text>
           <View style={styles.characters}>
             <View  style={styles.intern}>
-              <Text
+              <TouchableOpacity
                 name="octopus"
                 onPress={() =>
                   setPlayerOne({ name: "octopus", picture: { octopus } })
@@ -68,23 +67,22 @@ export default function SelectCharacter ({ history }) {
                   source={octopus}
                   style={{  height: 100, width: 100 }}
                 />
-              </Text>
+              </TouchableOpacity>
             </View>
             <View style={styles.intern}>
-              <Text
+              <TouchableOpacity
                 name="cat"
                 onPress={() => setPlayerOne({ name: "cat", picture: { cat } })}
               >
                 <Image
-                  name="cat"
-                  style={{  height: 100, width: 100 }}
+                  style={{  height: 100, width: 100}}
                   resizeMode="contain"
                   source={cat}
                 />
-              </Text>
+              </TouchableOpacity>
             </View>
             <View style={styles.intern}>
-              <Text
+              <TouchableOpacity
                 name="unicorn"
                 onPress={() =>
                   setPlayerOne({ name: "unicorn", picture: { unicorn } })
@@ -94,7 +92,7 @@ export default function SelectCharacter ({ history }) {
                 source={unicorn}
                 style={{  height: 100, width: 100 }} resizeMode="contain"/>
 
-              </Text>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -103,7 +101,7 @@ export default function SelectCharacter ({ history }) {
           <Text style={styles.text2}> PLAYER 2</Text>
           <View style={styles.characters}>
             <View style={styles.intern}>
-              <Text 
+              <TouchableOpacity 
                 name="octopus"
                 onPress={() =>
                   setPlayerTwo({ name: "octopus", picture: { octopus } })
@@ -114,11 +112,11 @@ export default function SelectCharacter ({ history }) {
                   style={{ width: 100, height: 100 }}
                   source={octopus}
                 />
-              </Text>
+              </TouchableOpacity>
             </View>
 
             <View style={styles.intern}>
-              <Text
+              <TouchableOpacity
                 name="cat"
                 onPress={() => setPlayerTwo({ name: "cat", picture: { cat } })}
               >
@@ -127,10 +125,10 @@ export default function SelectCharacter ({ history }) {
                   style={{ width: 100, height: 100 , top:0}}
                   source={cat}
                 />
-              </Text>
+              </TouchableOpacity>
             </View>
             <View style={styles.intern}>
-              <Text
+              <TouchableOpacity
                 name="unicorn"
                 onPress={() =>
                   setPlayerTwo({ name: "unicorn", picture: { unicorn } })
@@ -141,7 +139,7 @@ export default function SelectCharacter ({ history }) {
                 name="unicorn"
                 style={{ width: 100, height: 100 }}/>
 
-              </Text>
+              </TouchableOpacity>
             </View>
           </View>
           
@@ -180,6 +178,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontFamily: "IBM",
     color:"rgb(122, 53, 209)",
+    marginBottom:15,
   },
   container: {
     maxHeight: "100%",
@@ -193,11 +192,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "flex-start",
     justifyContent: "space-around",
-    backgroundColor:"green",
+
   },
-  intern : {
-    backgroundColor:"blue",
-  },
+
 
   playerOne: {
     maxHeight: 200,
@@ -205,7 +202,6 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor:"pink"
   },
   playerTwo: {
     maxHeight: 200,
@@ -213,11 +209,11 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor:"red"
+
   },
   playersBox: {
     flex: 1,
-    bottom: "7%",
+    bottom: "4%",
     alignItems: "center",
     justifyContent: "center"
   }
