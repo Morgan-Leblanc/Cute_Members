@@ -1,17 +1,37 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Image, Button, ImageBackground } from "react-native";
-import chicken from "../assets/pictures/card-octopus.jpg";
-import goat from "../assets/pictures/card-unicorn.jpg";
+import octopus from "../assets/pictures/card-octopus.jpg";
+import unicorn from "../assets/pictures/card-unicorn.jpg";
 import cat from "../assets/pictures/card-cat.jpg";
 import background from "../assets/pictures/background.jpg"
+import { AppLoading, AuthSession } from 'expo';
+import * as Font from 'expo-font';
 
 
+const fetchFonts = () => {
+  return Font.loadAsync({
+    "Londrina": require('../assets/fonts/LondrinaSolid-Regular.ttf'),
+    "IBM": require('../assets/fonts/IBMPlexSans-Bold.ttf')
+  });
+  };
 
 
-
-export default ({ history }) => {
+export default function SelectCharacter ({ history }) {
   const [playerOne, setPlayerOne] = useState("");
   const [playerTwo, setPlayerTwo] = useState("");
+
+
+
+  const [dataLoaded, setDataLoaded] = useState(false);
+  if (!dataLoaded) {
+    return (
+      <AppLoading
+      startAsync={fetchFonts}
+      onFinish={() => setDataLoaded(true)}
+      />
+    );
+  }
+
 
   const checkPick = () => {
     if (playerTwo === "") {
@@ -29,97 +49,107 @@ export default ({ history }) => {
   return (
     <ImageBackground source={background} style={{width: '100%', height: '100%'}} >
     <View style={styles.container}>
-      <Text style={{fontFamily:"IBM"}} style={styles.text} h1>
-        Choose your animal
+      <Text style={styles.title}>
+        Choose your animal!
       </Text>
       <View style={styles.playersBox}>
         <View style={styles.playerOne}>
-          <Text style={styles.text}> Player One</Text>
+          <Text style={styles.text2}> PLAYER 1</Text>
           <View style={styles.characters}>
-            <View>
+            <View  style={styles.intern}>
               <Text
-                name="chicken"
+                name="octopus"
                 onPress={() =>
-                  setPlayerOne({ name: "chicken", picture: { chicken } })
+                  setPlayerOne({ name: "octopus", picture: { octopus } })
                 }
               >
                 <Image
-                  name="chicken"
-                  style={{ width: 100, height: 100 }}
-                  source={chicken}
+                  name="octopus"
+                  source={octopus}
+                  style={{  height: 100, width: 100 }}
                 />
               </Text>
             </View>
-            <View>
+            <View style={styles.intern}>
               <Text
                 name="cat"
                 onPress={() => setPlayerOne({ name: "cat", picture: { cat } })}
               >
                 <Image
                   name="cat"
-                  style={{ width: 100, height: 100 }}
+                  style={{  height: 100, width: 100 }}
+                  resizeMode="contain"
                   source={cat}
                 />
               </Text>
             </View>
-            <View>
+            <View style={styles.intern}>
               <Text
-                name="cat"
+                name="unicorn"
                 onPress={() =>
-                  setPlayerOne({ name: "goat", picture: { goat } })
+                  setPlayerOne({ name: "unicorn", picture: { unicorn } })
                 }
               >
-                <Image style={{ width: 100, height: 100 }} source={goat} />
+                <Image name="unicorn"
+                source={unicorn}
+                style={{  height: 100, width: 100 }} resizeMode="contain"/>
+
               </Text>
             </View>
           </View>
         </View>
 
         <View style={styles.playerTwo}>
-          <Text style={styles.text}> Player Two</Text>
+          <Text style={styles.text2}> PLAYER 2</Text>
           <View style={styles.characters}>
-            <View>
-              <Text
-                name="chicken"
+            <View style={styles.intern}>
+              <Text 
+                name="octopus"
                 onPress={() =>
-                  setPlayerTwo({ name: "chicken", picture: { chicken } })
+                  setPlayerTwo({ name: "octopus", picture: { octopus } })
                 }
               >
                 <Image
-                  name="chicken"
+                  name="octopus"
                   style={{ width: 100, height: 100 }}
-                  source={chicken}
+                  source={octopus}
                 />
               </Text>
             </View>
 
-            <View>
+            <View style={styles.intern}>
               <Text
                 name="cat"
                 onPress={() => setPlayerTwo({ name: "cat", picture: { cat } })}
               >
                 <Image
                   name="cat"
-                  style={{ width: 100, height: 100 }}
+                  style={{ width: 100, height: 100 , top:0}}
                   source={cat}
                 />
               </Text>
             </View>
-            <View>
+            <View style={styles.intern}>
               <Text
-                name="goat"
+                name="unicorn"
                 onPress={() =>
-                  setPlayerTwo({ name: "goat", picture: { goat } })
+                  setPlayerTwo({ name: "unicorn", picture: { unicorn } })
                 }
               >
-                <Image style={{ width: 100, height: 100 }} source={goat} />
+                <Image 
+                source={unicorn}
+                name="unicorn"
+                style={{ width: 100, height: 100 }}/>
+
               </Text>
             </View>
           </View>
-          <Text style={styles.buttonCheck} title="Valide" onPress={() => checkPick()}>
+          
+        </View>
+        <Text style={styles.buttonCheck} title="Valide" onPress={() => checkPick()}>
                 FIGHT !
           </Text>
-        </View>
+
       </View>
     </View>
     </ImageBackground>
@@ -127,40 +157,63 @@ export default ({ history }) => {
 };
 const styles = StyleSheet.create({
   buttonCheck: {
-    backgroundColor: "black",
+    backgroundColor: "rgb(122, 53, 209)",
     color: "white",
-    fontSize: 40,
+    fontSize: 50,
+    fontFamily: "Londrina",
+    top: 50,
+    padding:7,
+    paddingLeft:15,
+    paddingRight:15,
+    borderRadius:15,
   },
-  text: {
+  title: {
+    fontSize: 40,
+    top: 70,
+    textAlign: "center",
+    fontFamily: "Londrina",
+    color:"rgb(122, 53, 209)",
+    marginBottom:50,
+  },
+  text2: {
     fontSize: 30,
+    textAlign: "center",
+    fontFamily: "IBM",
+    color:"rgb(122, 53, 209)",
   },
   container: {
     maxHeight: "100%",
-    top: 50,
     flex: 1,
-    alignItems: "center"
+    alignItems: "center",
   },
   characters: {
-    maxHeight: 140,
     width: 350,
+    height: 400,
     flex: 1,
     flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-around"
+    alignItems: "flex-start",
+    justifyContent: "space-around",
+    backgroundColor:"green",
   },
+  intern : {
+    backgroundColor:"blue",
+  },
+
   playerOne: {
     maxHeight: 200,
     flex: 1,
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    backgroundColor:"pink"
   },
   playerTwo: {
     maxHeight: 200,
     flex: 1,
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    backgroundColor:"red"
   },
   playersBox: {
     flex: 1,
