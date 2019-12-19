@@ -7,12 +7,6 @@
     "web": "expo start --web",
     "eject": "expo eject"
   },
-  "rnpm": {
-    "assets": [
-      "./assets/fonts/IBM",
-      "./assets/fonts/Londrina"
-    ]
-  },
   "dependencies": {
     "expo": "~36.0.0",
     "expo-sensors": "~8.0.0",
@@ -25,7 +19,8 @@
     "react-native-viewport-units": "0.0.5",
     "react-native-web": "~0.11.7",
     "react-navigation": "^4.0.10",
-    "react-router-native": "^5.1.2"
+    "react-router-native": "^5.1.2",
+    "expo-font": "~8.0.0"
   },
   "devDependencies": {
     "babel-preset-expo": "~8.0.0",

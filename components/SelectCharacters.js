@@ -1,24 +1,44 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Image, Button, ImageBackground } from "react-native";
-import chicken from "../assets/pictures/card-octopus.jpg";
-import goat from "../assets/pictures/card-unicorn.jpg";
+import octopus from "../assets/pictures/card-octopus.jpg";
+import unicorn from "../assets/pictures/card-unicorn.jpg";
 import cat from "../assets/pictures/card-cat.jpg";
 import background from "../assets/pictures/background.jpg"
+import { AppLoading } from 'expo';
+import * as Font from 'expo-font';
 
 
+const fetchFonts = () => {
+  return Font.loadAsync({
+    "Londrina": require('../assets/fonts/LondrinaSolid-Regular.ttf'),
+    "IBM": require('../assets/fonts/IBMPlexSans-Bold.ttf')
+  });
+  };
 
 
-
-export default ({ history }) => {
+export default function SelectCharacter ({ history }) {
   const [playerOne, setPlayerOne] = useState("");
   const [playerTwo, setPlayerTwo] = useState("");
 
+
+
+  const [dataLoaded, setDataLoaded] = useState(false);
+  if (!dataLoaded) {
+    return (
+      <AppLoading
+      startAsync={fetchFonts}
+      onFinish={() => setDataLoaded(true)}
+      />
+    );
+  }
+
+
   const checkPick = () => {
     if (playerTwo === "") {
-      alert("Joueur un  n'a pas selectionné son personnage");
+      alert("Joueur un n'a pas selectionné son personnage");
     }
     if (playerOne === "") {
-      alert("Joueurs deux n'a pas selectionné son personnage");
+      alert("Joueur deux n'a pas selectionné son personnage");
     } else {
       history.push("/");
     }
@@ -29,24 +49,24 @@ export default ({ history }) => {
   return (
     <ImageBackground source={background} style={{width: '100%', height: '100%'}} >
     <View style={styles.container}>
-      <Text style={{fontFamily:"IBM"}} style={styles.text} h1>
-        Choose your animal
+      <Text style={styles.title}>
+        Choose your animal!
       </Text>
       <View style={styles.playersBox}>
         <View style={styles.playerOne}>
-          <Text style={styles.text}> Player One</Text>
+          <Text style={styles.text2}> PLAYER 1</Text>
           <View style={styles.characters}>
             <View>
               <Text
-                name="chicken"
+                name="octopus"
                 onPress={() =>
-                  setPlayerOne({ name: "chicken", picture: { chicken } })
+                  setPlayerOne({ name: "octopus", picture: { octopus } })
                 }
               >
                 <Image
-                  name="chicken"
+                  name="octopus"
+                  source={octopus}
                   style={{ width: 100, height: 100 }}
-                  source={chicken}
                 />
               </Text>
             </View>
@@ -64,31 +84,34 @@ export default ({ history }) => {
             </View>
             <View>
               <Text
-                name="cat"
+                name="unicorn"
                 onPress={() =>
-                  setPlayerOne({ name: "goat", picture: { goat } })
+                  setPlayerOne({ name: "unicorn", picture: { unicorn } })
                 }
               >
-                <Image style={{ width: 100, height: 100 }} source={goat} />
+                <Image name="unicorn"
+                source={unicorn}
+                style={{ width: 100, height: 100 }}/>
+
               </Text>
             </View>
           </View>
         </View>
 
         <View style={styles.playerTwo}>
-          <Text style={styles.text}> Player Two</Text>
+          <Text style={styles.text2}> PLAYER 2</Text>
           <View style={styles.characters}>
             <View>
               <Text
-                name="chicken"
+                name="octopus"
                 onPress={() =>
-                  setPlayerTwo({ name: "chicken", picture: { chicken } })
+                  setPlayerTwo({ name: "octopus", picture: { octopus } })
                 }
               >
                 <Image
-                  name="chicken"
+                  name="octopus"
                   style={{ width: 100, height: 100 }}
-                  source={chicken}
+                  source={octopus}
                 />
               </Text>
             </View>
@@ -107,12 +130,16 @@ export default ({ history }) => {
             </View>
             <View>
               <Text
-                name="goat"
+                name="unicorn"
                 onPress={() =>
-                  setPlayerTwo({ name: "goat", picture: { goat } })
+                  setPlayerTwo({ name: "unicorn", picture: { unicorn } })
                 }
               >
-                <Image style={{ width: 100, height: 100 }} source={goat} />
+                <Image 
+                source={unicorn}
+                name="unicorn"
+                style={{ width: 100, height: 100 }}/>
+                
               </Text>
             </View>
           </View>
@@ -127,16 +154,31 @@ export default ({ history }) => {
 };
 const styles = StyleSheet.create({
   buttonCheck: {
-    backgroundColor: "black",
+    backgroundColor: "rgb(122, 53, 209)",
     color: "white",
-    fontSize: 40,
+    fontSize: 50,
+    fontFamily: "Londrina",
+    top: 70,
+    padding:7,
+    paddingLeft:15,
+    paddingRight:15,
+    borderRadius:15,
   },
-  text: {
+  title: {
+    fontSize: 40,
+    top: 70,
+    textAlign: "center",
+    fontFamily: "Londrina",
+    color:"rgb(122, 53, 209)",
+  },
+  text2: {
     fontSize: 30,
+    textAlign: "center",
+    fontFamily: "IBM",
+    color:"rgb(122, 53, 209)",
   },
   container: {
     maxHeight: "100%",
-    top: 50,
     flex: 1,
     alignItems: "center"
   },
