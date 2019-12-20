@@ -161,6 +161,7 @@ const Square1 = styled.TouchableOpacity`
         min-width: 150px;
         min-height: 50px;
     `
+
 const Square2 = styled.TouchableOpacity`
     background-color: ${props => props.isActivated ? 'whitesmoke' : props.color};
     margin: 3px;
