@@ -195,7 +195,7 @@ const fetchSound = () => {
        onTimedMetadata={this.onTimedMetadata}  // Callback when the stream receive some metadata
        style={styles.backgroundVideo} /> */}
         {/* <Text style={styles.title}>CUT(e) MEMBERS</Text> */}
-        <TouchableOpacity style={styles.buttonPlay} onPress={() => history.push("/newgame")}>
+        <TouchableOpacity style={styles.buttonPlay} onPress={() => history.push("/select_characters")}>
           <Text style={styles.textButton}>PLAY</Text>
         </TouchableOpacity>
 
