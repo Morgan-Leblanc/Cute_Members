@@ -1,12 +1,49 @@
-import React, { useState } from "react";
-import { StyleSheet, View, Text, Button, TouchableOpacity,  ImageBackground } from "react-native";
+import React, { useState , useEffect} from "react";
+import { StyleSheet, View, Text, Image, Button, TouchableOpacity,  TouchableHighlight, ImageBackground } from "react-native";
 import homepage from "../assets/images/homepage.jpg"
+import speaker from "../assets/icons/sound.png"
 import { AppLoading, AuthSession } from 'expo';
 import { Audio } from 'expo-av';
 import * as Font from 'expo-font';
 // var Sound = require('react-native-sound');
 // import Sound from 'react-native-sound';
 
+
+
+
+
+
+// const fetchSound = () => {
+//   const soundObject = new Audio.Sound();
+//   (async () => {
+//     await soundObject.loadAsync(require('../assets/musics/ES_Just So Happy for You - Josef Bel Habib.mp3'));
+//   } 
+//    )();
+// }
+
+
+
+
+
+
+
+// try {
+//   await soundObject.loadAsync(require('../assets/musics/ES_Just So Happy for You - Josef Bel Habib.mp3'));
+//   await soundObject.playAsync();
+//   // Your sound is playing!
+// } catch (e) {
+//   console.log(`cannot play the sound file`, e)
+// }
+
+ 
+// try {
+//     // play the file tone.mp3
+//     SoundPlayer.playSoundFile('../assets/musics/ES_Just So Happy for You - Josef Bel Habib', 'mp3')
+//     // or play from url
+//     // SoundPlayer.playUrl('https://example.com/music.mp3')
+// } catch (e) {
+//     console.log(`cannot play the sound file`, e)
+// }
 
 const fetchFonts = () => {
   return Font.loadAsync({
@@ -19,29 +56,11 @@ const fetchFonts = () => {
 
 
 
-const soundObject = new Audio.Sound();
-try {
-  await soundObject.loadAsync(require('../assets/musics/ES_Just So Happy for You - Josef Bel Habib.mp3'));
-  await soundObject.playAsync();
-  // Your sound is playing!
-} catch (e) {
-  console.log(`cannot play the sound file`, e)
-}
-
- 
-// try {
-//     // play the file tone.mp3
-//     SoundPlayer.playSoundFile('../assets/musics/ES_Just So Happy for You - Josef Bel Habib', 'mp3')
-//     // or play from url
-//     // SoundPlayer.playUrl('https://example.com/music.mp3')
-// } catch (e) {
-//     console.log(`cannot play the sound file`, e)
-// }
-
 
 
 export default ({ history }) => {
   const [dataLoaded, setDataLoaded] = useState(false);
+
 
   if (!dataLoaded) {
     return (
@@ -53,6 +72,32 @@ export default ({ history }) => {
   }
 
 
+  ////code OK!!!!!////
+const fetchSound = () => {
+  const soundObject = new Audio.Sound();
+  (async () => {
+    await soundObject.loadAsync(require('../assets/musics/ES_JustSoHappyforYou_JosefBelHabib.mp3'))
+    await soundObject.setIsLoopingAsync(true)
+    await soundObject.playAsync()} 
+   )();
+}
+
+
+
+  // useEffect(() => {
+  //   fetchSound()
+  // },[])
+
+
+
+
+  // const [soundLoaded, setSoundLoaded] = useState(false);
+  // if (!soundLoaded) {
+  //   return (
+      
+      
+  //   );
+  // }
 
   // const soundObject = new Expo.Audio.Sound();
 
@@ -65,6 +110,15 @@ export default ({ history }) => {
   // }
 
 
+  // try {
+  //       // play the file tone.mp3
+  //       SoundPlayer.playSoundFile('../assets/musics/ES_Just So Happy for You - Josef Bel Habib', 'mp3')
+  //       // or play from url
+  //       // SoundPlayer.playUrl('https://example.com/music.mp3')
+  //   } catch (e) {
+  //       console.log(`cannot play the sound file`, e)
+  //   }
+
 
 // sound = new Sound('../assets/musics/ES_Just So Happy for You - Josef Bel Habib.mp3');
 
@@ -73,22 +127,22 @@ export default ({ history }) => {
 //     }
 
 
-  // const filepath = '../assets/musics/ES_Just So Happy for You - Josef Bel Habib.mp3';
+// const filepath = '../assets/musics/ES_Just So Happy for You - Josef Bel Habib.mp3';
 // const currentAudio = new Sound(filepath);
 // currentAudio.setCategory('Playback');
 
 
+// const soundObject = new Audio.Sound();
+// try {
+//   soundObject.loadAsync(require('../assets/musics/ES_Just So Happy for You - Josef Bel Habib.mp3'));
+//   soundObject.playAsync();
+//   // Your sound is playing!
+// } catch (e) {
+//   console.log(`cannot play the sound file`, e)
+// }
 
 
-  // const [soundLoaded, setSoundLoaded] = useState(false);
-  // if (!soundLoaded) {
-  //   return (
-  //     <AppLoading
-  //       startAsync={fetchSound}
-  //       onFinish={() => setSoundLoaded(true)}
-  //     />
-  //   );
-  // }
+
 
 
 
@@ -103,6 +157,14 @@ export default ({ history }) => {
   //   console.log(`cannot play the sound file`, e)
   // }
 
+  // const fetchSound = () => {
+  //   const soundObject = new Audio.Sound();
+  //   (async () => {
+  //     await soundObject.loadAsync(require('../assets/musics/ES_JustSoHappyforYou_JosefBelHabib.mp3'))
+  //     await soundObject.setIsLoopingAsync(true);
+  //     await soundObject.playAsync()} 
+  //    )();
+  // }
   
 
 
@@ -136,9 +198,13 @@ export default ({ history }) => {
         <TouchableOpacity style={styles.buttonPlay} onPress={() => history.push("/newgame")}>
           <Text style={styles.textButton}>PLAY</Text>
         </TouchableOpacity>
-        {/* <TouchableOpacity style={styles.buttonPlay} onPress={() => playSound()}>
-          <Text style={styles.textButton}>SOUND</Text>
-        </TouchableOpacity> */}
+
+  
+        <TouchableOpacity onPress={fetchSound()} >
+          <Image style={{ opacity:0, top:480,height:50, width:50, alignSelf:"flex-end", marginRight:40}}
+                  source={speaker}  />
+        </TouchableOpacity>
+  
     </View>
   </ImageBackground>
 
@@ -172,4 +238,4 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   }
-});
+})
