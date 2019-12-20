@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, ImageBackground, Image } from "react-native";
+import { Animated,StyleSheet, View, ImageBackground, Image } from "react-native";
 import cat1 from "../assets/pictures/cat-1.png";
 import background from "../assets/pictures/background.jpg";
 import counterleft from "../assets/pictures/counter-left.png";
@@ -8,14 +8,13 @@ import unicorn1 from "../assets/pictures/unicorn-1.png"
 
 
 
-
-
-export default class Duel extends React.Component{
+export default class Duel extends React.Component{  
   render(){
   return (
     
    
     <ImageBackground source={background} style={{width: '100%', height: '100%'}} >
+    
 
     <View style={styles.container}>
 
@@ -31,8 +30,10 @@ export default class Duel extends React.Component{
 
       <View>
       <View style={styles.lineOne}/>
+      
+      
       <View style={styles.unicorn1}>
-  
+      
         <Image
         name="unicorn1"
         style={{width: 160, height: 200}}
@@ -40,6 +41,7 @@ export default class Duel extends React.Component{
         />
       </View>
       </View>
+      
       
       <View>
       <View style={styles.lineTwo}/>
@@ -82,6 +84,8 @@ const styles= StyleSheet.create({
   
   
   },
+
+ 
   cat1:{
     flexDirection:"column",
     marginTop:-40,
