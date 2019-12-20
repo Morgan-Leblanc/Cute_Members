@@ -1,83 +1,90 @@
+
 import React from 'react'
-import {Button,StyleSheet, View, ImageBackground, Image } from "react-native";
-import cat1 from "../assets/pictures/cat-1.png";
+import { StyleSheet, View, ImageBackground, Image } from "react-native";
+import cat3 from "../assets/pictures/cat-3.png";
 import background from "../assets/pictures/background.jpg";
-import counterleft from "../assets/pictures/counter-left.png";
-import unicorn1 from "../assets/pictures/unicorn-1.png"
+import counterRight from "../assets/pictures/counter-right.png";
+import unicorn3 from "../assets/pictures/unicorn-3.png"
 
 
 
 
-export default ({history}) => (  
+export default class Duel extends React.Component
+{  
+ 
 
+  
+  render(){
+  return (
+    
+   
     <ImageBackground source={background} style={{width: '100%', height: '100%'}} >
     
 
-    <View style={styles.container}>
+    <View style={styles.containerTwo}>
 
-    <View style={styles.counterleft} >
+    <View style={styles.counterRight} >
      <Image
-       name="counterLeft"
+       name="counterRight"
        style={{ width: 250, height: 120 }}
-       source={counterleft} />
+       source={counterRight} />
      </View>
 
 
-     <View style={styles.characters}>
+     <View style={styles.charactersTwo}>
 
       <View>
-      <View style={styles.lineOne}/>
+      <View style={styles.lineThree} >
       
       
-      <View style={styles.unicorn1}>
+      <View style={styles.unicorn3}>
       
         <Image
-        name="unicorn1"
+        name="unicorn3"
         style={{width: 160, height: 200}}
-        source={unicorn1}
+        source={unicorn3}
         />
       </View>
       </View>
       
       
       <View>
-      <View style={styles.lineTwo}/>
-      <View style={styles.cat1}>
+      <View style={styles.lineFour}/>
+      <View style={styles.cat3}>
       
       <Image
-       name="cat1"
+       name="cat3"
        style={{ width: 200, height: 120}}
-       source={cat1} />
+       source={cat3} />
       </View>
       </View>
 
       </View>
       </View>
-    
-    <Button title="change page" onPress={() => history.push("/dualdead")} />
+      </View>
     </ImageBackground>
   )
-
-
+}
+}
 
 
 
 const styles= StyleSheet.create({
- container:{
+ containerTwo:{
    flexDirection:"column",
  },
 
-  counterleft: {
+  counterRight: {
     alignItems: "center",
     marginTop: "40%",
   },
-  characters:{
+  charactersTwo:{
     flexDirection:"row",
     padding:9,
     marginTop:-18,
 
   },
-  unicorn1:{
+  unicorn3:{
     flexDirection:"column",
     marginTop:-40,
   
@@ -85,18 +92,18 @@ const styles= StyleSheet.create({
   },
 
  
-  cat1:{
+  cat3:{
     flexDirection:"column",
     marginTop:-40,
   },
-  lineOne:{
+  lineThree:{
     height: 150,
     width: 4,
     backgroundColor:"rgb(122, 53, 209)",
     alignSelf:"center",
     
   },
-  lineTwo:{
+  lineFour:{
     height: 150,
     width: 4,
     backgroundColor:"rgb(122, 53, 209)",
@@ -106,5 +113,8 @@ const styles= StyleSheet.create({
 }
 
 )
+
+
+
 
 
