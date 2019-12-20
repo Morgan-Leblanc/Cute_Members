@@ -3,31 +3,25 @@ import React from 'react'
 import { StyleSheet, View, ImageBackground, Image } from "react-native";
 import cat3 from "../assets/pictures/cat-3.png";
 import background from "../assets/pictures/background.jpg";
-import counterRight from "../assets/pictures/counter-right.png";
+import counterright from "../assets/pictures/counter-right.png";
 import unicorn3 from "../assets/pictures/unicorn-3.png"
 
 
 
 
-export default class Duel extends React.Component
-{  
- 
-
-  
-  render(){
-  return (
+export default  (
     
    
     <ImageBackground source={background} style={{width: '100%', height: '100%'}} >
     
 
-    <View style={styles.containerTwo}>
+    <View style={styles.cadre}>
 
-    <View style={styles.counterRight} >
+    <View style={styles.counterright} >
      <Image
-       name="counterRight"
+       name="counterright"
        style={{ width: 250, height: 120 }}
-       source={counterRight} />
+       source={counterright} />
      </View>
 
 
@@ -64,17 +58,16 @@ export default class Duel extends React.Component
       </View>
     </ImageBackground>
   )
-}
-}
+
 
 
 
 const styles= StyleSheet.create({
- containerTwo:{
+ cadre:{
    flexDirection:"column",
  },
 
-  counterRight: {
+  counterright: {
     alignItems: "center",
     marginTop: "40%",
   },
