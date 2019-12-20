@@ -1,37 +1,24 @@
-import React, { Fragment } from 'react';
-import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { NativeRouter, Switch, Route } from "react-router-native";
+import SelectCharacters from "./components/SelectCharacters";
+import Home from "./components/Home"
+import Duel from "./components/Duel";
 
 
-export default class App extends React.Component{
+
+
+
+export default class App extends React.Component {
   render(){
-  return (
-     <View style={{justifyContent:"center"}}>
-    <View style={styles.black} />
-    <View style={styles.lineOne}/>
-    </View>
-    
-     
-    
+    return (
+    <NativeRouter>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/select_characters" component={SelectCharacters} />
+          <Route exact path="/duel" component={Duel}/>
+        </Switch>
+    </NativeRouter>
   );
 }
+
 }
-
-const styles = StyleSheet.create({
-  black: {
-    padding: 90,
-    margin: 5,
-    backgroundColor: 'black',
-    borderTopLeftRadius:15,
-    borderTopRightRadius:15,
-
-},
-  lineOne: {
-    padding:3,
-    margin:5,
-    maxWidth:"3%",
-    height:600,
-    backgroundColor:'pink'
-
-  },
-
-})
