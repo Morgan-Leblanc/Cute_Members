@@ -15,7 +15,7 @@ export default function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/select_characters" component={SelectCharacters} />
-          <Route exact path="/duel_versus" component={DuelVersus} />
+          <Route exact path="/duel_versus/:playerOne/:playerTwo" component={DuelVersus} />
         </Switch>
       </View>
     </NativeRouter>

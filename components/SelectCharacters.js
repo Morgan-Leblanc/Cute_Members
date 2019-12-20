@@ -40,7 +40,7 @@ export default function SelectCharacter ({ history }) {
     if (playerOne === "") {
       alert("Joueur deux n'a pas selectionné son personnage");
     } else {
-      history.push("/duel_versus");
+      history.push(`/duel_versus/${playerOne}/${playerTwo}`);
     }
   };
 
@@ -59,7 +59,7 @@ export default function SelectCharacter ({ history }) {
               <TouchableOpacity
                 name="octopus"
                 onPress={() =>
-                  setPlayerOne({ name: "octopus", picture: { octopus } })
+                  setPlayerOne( "octopus" )
                 }
               >
                 <Image
@@ -72,7 +72,7 @@ export default function SelectCharacter ({ history }) {
             <View style={styles.intern}>
               <TouchableOpacity
                 name="cat"
-                onPress={() => setPlayerOne({ name: "cat", picture: { cat } })}
+                onPress={() => setPlayerOne( "cat" )}
               >
                 <Image
                   style={{  height: 100, width: 100}}
@@ -85,7 +85,7 @@ export default function SelectCharacter ({ history }) {
               <TouchableOpacity
                 name="unicorn"
                 onPress={() =>
-                  setPlayerOne({ name: "unicorn", picture: { unicorn } })
+                  setPlayerOne( "unicorn" )
                 }
               >
                 <Image name="unicorn"
@@ -104,7 +104,7 @@ export default function SelectCharacter ({ history }) {
               <TouchableOpacity 
                 name="octopus"
                 onPress={() =>
-                  setPlayerTwo({ name: "octopus", picture: { octopus } })
+                  setPlayerTwo( "octopus" )
                 }
               >
                 <Image
@@ -118,7 +118,7 @@ export default function SelectCharacter ({ history }) {
             <View style={styles.intern}>
               <TouchableOpacity
                 name="cat"
-                onPress={() => setPlayerTwo({ name: "cat", picture: { cat } })}
+                onPress={() => setPlayerTwo( "cat" )}
               >
                 <Image
                   name="cat"
@@ -131,7 +131,7 @@ export default function SelectCharacter ({ history }) {
               <TouchableOpacity
                 name="unicorn"
                 onPress={() =>
-                  setPlayerTwo({ name: "unicorn", picture: { unicorn } })
+                  setPlayerTwo( "unicorn" )
                 }
               >
                 <Image 

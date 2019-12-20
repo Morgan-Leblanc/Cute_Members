@@ -8,6 +8,9 @@ import background from "../assets/pictures/background.jpg";
 import { AppLoading, AuthSession } from 'expo';
 import * as Font from 'expo-font';
 import { Redirect } from "react-router-native";
+import octopus from "../assets/pictures/card-octopus.jpg";
+import unicorn from "../assets/pictures/card-unicorn.jpg";
+import cat from "../assets/pictures/card-cat.jpg";
 
 const fetchFonts = () => {
     return Font.loadAsync({
@@ -16,7 +19,13 @@ const fetchFonts = () => {
     });
     };
 
-export default ({ history }) => {
+export default ( { props } ) => {
+
+    const animal1 = props.params.playerOne
+    const animal2 = props.params.playerTwo
+    console.log("animal1:", animal1);
+    console.log("animal2:", animal2);
+    
 
     const [dataLoaded, setDataLoaded] = useState(false);
         if (!dataLoaded) {
