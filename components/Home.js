@@ -1,8 +1,8 @@
-import React from "react";
-import { StyleSheet, View, Text, Button, TouchableOpacity } from "react-native";
-import { AuthSession } from "expo";
+import React, { useState } from "react";
+import { StyleSheet, View, Text, Button, TouchableOpacity,  ImageBackground } from "react-native";
 import homepage from "../assets/images/homepage.jpg"
-import * as Font from "expo-font";
+import { AppLoading, AuthSession } from 'expo';
+import * as Font from 'expo-font';
 
 
 const fetchFonts = () => {
@@ -23,14 +23,18 @@ export default ({ history }) => {
     );
   }
 
+  return (
+
   <ImageBackground source={homepage} style={{width: '100%', height: '100%'}} >
     <View style={styles.container}>
         {/* <Text style={styles.title}>CUT(e) MEMBERS</Text> */}
-        <Text style={styles.buttonPlay} onPress={() => history.push("/newgame")}>
-          PLAY
-        </Text>
+        <TouchableOpacity style={styles.buttonPlay} onPress={() => history.push("/newgame")}>
+          <Text style={styles.textButton}>PLAY</Text>
+        </TouchableOpacity>
     </View>
   </ImageBackground>
+
+  )
 };
 
 
@@ -41,15 +45,18 @@ const styles = StyleSheet.create({
     bottom: 50,
     fontWeight: "bold"
   },
-  buttonPlay: {
-    backgroundColor: "rgb(122, 53, 209)",
+  textButton : {
     color: "white",
     fontSize: 50,
     fontFamily: "Londrina",
-    top: 70,
+  },
+
+  buttonPlay: {
+    backgroundColor: "rgb(122, 53, 209)",
+    top: 450,
     padding:7,
-    paddingLeft:15,
-    paddingRight:15,
+    paddingLeft:55,
+    paddingRight:55,
     borderRadius:15,
     paddingHorizontal: 20,
   },
